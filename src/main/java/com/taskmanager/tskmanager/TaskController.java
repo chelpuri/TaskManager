@@ -60,4 +60,22 @@ public class TaskController {
         tasks.remove(id);
         return "Task Deleted";
     }
+
+    @GetMapping("/completed/{iscomp}")
+    public List<Task> getCompletedTask(@PathVariable("iscomp") String isCompleted)
+    {
+        List<Task> ans = new ArrayList<>();
+        for(Task t:tasks)
+        {
+            if(t.getCompleted().equals(isCompleted))
+            {
+                ans.add(t);
+            }
+        }
+        if(ans.isEmpty()){
+            return null;
+        }
+
+        return ans;
+    }
 }
