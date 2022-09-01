@@ -8,9 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
-
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,9 +27,9 @@ public abstract class BaseEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     public long id;
     
-    @CreatedDate
+    @CreationTimestamp
     Date createdDate;
 
-    @LastModifiedDate
+    @UpdateTimestamp
     Date updatedDate;
 }
